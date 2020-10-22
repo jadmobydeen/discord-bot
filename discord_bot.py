@@ -16,16 +16,6 @@ class MyClient(discord.Client):
         msg = message.content
         channel = message.channel
 
-        # Handle links in listen-to-this-song
-        DISCORD_CHANNEL = os.getenv('DISCORD_CHANNEL')
-        PLAYLIST_ID = os.getenv('PLAYLIST_ID')
-        if message.channel.name == DISCORD_CHANNEL and 'open.spotify.com' in msg:
-            print(f'Got message: {msg}')
-            scope = 'playlist-modify-public'
-            sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
-            track = [msg]
-            sp.playlist_add_items(PLAYLIST_ID, track)
-
         # Handle -in command
         if ' ' not in msg and msg[-2:] == 'in':
             await channel.send(f'eyy I\'m {msg} here')
