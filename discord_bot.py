@@ -17,8 +17,8 @@ class MyClient(discord.Client):
         channel = message.channel
 
         # Handle -in command
-        if ' ' not in msg and msg[-2:] == 'in':
-            await channel.send(f'eyy I\'m {msg} here')
+        if ' in' and ' in ' not in msg and 'in' in msg:
+            await channel.send(f'eyy I\'m {msg[msg.index('in'):]} here')
 
 # If not hosted, load environment vars from .env file
 # load_dotenv()
